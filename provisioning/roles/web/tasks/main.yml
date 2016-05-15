@@ -1,0 +1,35 @@
+---
+  - name: install apache2
+    apt: pkg=apache2 state=present
+
+  - name: install php
+    apt: pkg={{ item }} state=present
+    with_items:
+      - php5
+      - php5-mysql
+      - php5-gd
+      - php-apc
+      - php5-mcrypt
+      - php5-curl
+      - php5-tidy
+      - libapache2-mod-php5
+    notify: service apache2 start/enable
+    tags:
+      - aptget
+
+  - name: enabled mod_rewrite
+    apache2_module: name=rewrite state=present
+      
+  - name: enabled mod_headers
+    apache2_module: name=headers state=present
+
+  - name: enabled mod_apc
+    apache2_module: name=headers state=present
+
+  - name: update apache2 main config
+    copy: src=roles/web/files/apache2.conf dest=/etc/apache2/apache2.conf owner=root group=root mode=644
+    notify: service apache2 start/enable
+
+  - name: update php apache2 config
+    copy: src=roles/web/files/php.ini dest=/etc/php5/apache2/php.ini owner=root group=root mode=644
+    notify: service apache2 start/enable

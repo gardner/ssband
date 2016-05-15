@@ -1,0 +1,8 @@
+---
+# file: dev.yml
+- hosts: all
+  vars:
+    vagrant: true
+  roles:
+    - common
+

@@ -1,0 +1,5 @@
+---
+  android_ndk_path: /vagrant/android-ndk-r11c
+  android_ndk_url: http://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip http://mirrors.neusoft.edu.cn/android/repository/android-ndk-r11c-linux-x86_64.zip http://android-mirror.bugly.qq.com:8080/android/repository/android-ndk-r11c-linux-x86_64.zip
+  android_ndk_md5: 80bd9bb8c75c3e261bac0784a6d092a5
+  
