@@ -20,7 +20,8 @@ Vagrant.configure(2) do |config|
   end
 
   cache_dir = local_cache(config.vm.box)
-  config.vm.synced_folder cache_dir, "/var/cache/apt/archives/"
+  config.vm.synced_folder cache_dir, "/var/cache/apt/archives/", type: "nfs"
+  config.vm.synced_folder ".", "/vagrant", type: "nfs"
   
   config.vm.provision :shell,
     privileged: true,

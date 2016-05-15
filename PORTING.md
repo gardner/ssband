@@ -1,17 +1,31 @@
 ## Android NDK
 
+
+
+node-sodium
+git clone https://github.com/paixaop/node-sodium.git
+npm link --host=i686-linux --arch=arm --dest-os=android --node_win_onecore=0 --UNAME_P=arm7
+
+
+
+cd /data/local/tmp/scuttlebot ; 
+
+export HOME=/data/local/tmp
+ ../node ./sbot.js server
+
+
+
 leveldown is 64bit
 chloride needs to work with ndk 
 
 
 
+    export TARGET_OS=android
+		export TARGET_OS=OS_ANDROID_CROSSCOMPILE
+    export ANDROID_NDK_HOME=~/android-ndk-r11c/
 		export TOOLCHAIN=$PWD/android-toolchain
 		mkdir -p $TOOLCHAIN
-		~/android-ndk-r11c/build/tools/make-standalone-toolchain.sh \
-		    --toolchain=arm-linux-androideabi-4.9 \
-		    --arch=arm \
-		    --install-dir=$TOOLCHAIN \
-		    --platform=android-21
+		~/android-ndk-r11c/build/tools/make-standalone-toolchain.sh --toolchain=arm-linux-androideabi-4.9 --arch=arm --install-dir=$TOOLCHAIN --platform=android-21
 		export PATH=$TOOLCHAIN/bin:$PATH
 		export AR=$TOOLCHAIN/bin/arm-linux-androideabi-ar
 		export CC=$TOOLCHAIN/bin/arm-linux-androideabi-gcc
@@ -20,10 +34,13 @@ chloride needs to work with ndk
 		
 		export TARGET_OS=OS_ANDROID_CROSSCOMPILE
 
+    # this cross compiles leveldb
+    npm --production install --host=i686-linux --target-arch=armv7 --arch=armv7 --dest-os=android --node_win_onecore=0 --TARGET_OS=OS_ANDROID_CROSSCOMPILE --OS_ANDROID
+
 		# npm install --arch=arm --dest-os=android
 		# --dest-os=android
 		
-		npm install leveldown-mobile --arch=arm --dest-os=android
+		npm install leveldown-mobile --arch=arm --dest-os=android --node_win_onecore=0
 
 
 
@@ -36,6 +53,26 @@ npm --save install leveldown-mobile --node_win_onecore=0 --arch=arm --dest-os=an
 
     # check out libsodium
     git clone https://github.com/  jedisct1/libsodium.git
+
+		# # check out libsodium
+		# git clone https://github.com/	jedisct1/libsodium.git
+		#
+		# export TOOLCHAIN=$PWD/android-toolchain
+		# mkdir -p $TOOLCHAIN
+		# ~/android-ndk-r11c/build/tools/make-standalone-toolchain.sh \
+		#     --toolchain=arm-linux-androideabi-4.9 \
+		#     --arch=arm \
+		#     --install-dir=$TOOLCHAIN \
+		#     --platform=android-21
+		# export PATH=$TOOLCHAIN/bin:$PATH
+		# export AR=$TOOLCHAIN/bin/arm-linux-androideabi-ar
+		# export CC=$TOOLCHAIN/bin/arm-linux-androideabi-gcc
+		# export CXX=$TOOLCHAIN/bin/arm-linux-androideabi-g++
+		# export LINK=$TOOLCHAIN/bin/arm-linux-androideabi-g++
+		#
+		# npm install
+
+
     
 
 

@@ -2,7 +2,8 @@
 # file: dev.yml
 - hosts: all
   vars:
-    vagrant: true
+    android_ndk_path: /vagrant/android-ndk-r11c
   roles:
     - common
+    - node
 

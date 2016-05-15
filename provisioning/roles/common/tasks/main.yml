@@ -1,8 +1,8 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
 
-- name: apt-get update
-  apt: update_cache=yes
+# - name: apt-get update
+#   apt: update_cache=yes
 
 - name: install build packages
   apt: name={{item}} state=installed
@@ -13,12 +13,22 @@
     - vim
     - htop
     - aria2
+    - unzip
+    - git
 
-  - name: check for android ndk in {{android_ndk_path}}
-    stat: path={{android_ndk_path}}
-    register: ndk_path
+- name: check for android ndk in {{android_ndk_path}}
+  stat: path={{android_ndk_path}}
+  register: ndk_path
 
-  - name: downloading android ndk (758M)
-    shell: aria2 -V --checksum=md5={{android_ndk_md5}} -x 4 -s 6 {{android_ndk_url}}
-    when: not ndk_path.stat.exists
+- name: downloading android ndk (758M)
+  shell: aria2 -V --checksum=md5={{android_ndk_md5}} -x 4 -s 6 {{android_ndk_url}}
+  args:
+    chdir: /vagrant/
+  when: not ndk_path.stat.exists
+
+- name: unzip android ndk
+  shell: unzip {{android_ndk_zip}}
+  args:
+    chdir: /vagrant/
+  when: not ndk_path.stat.exists
 

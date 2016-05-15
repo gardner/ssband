@@ -1,0 +1,13 @@
+---
+- name: clone node repo
+  git: repo={{node_repo}} dest={{node_dir}} version={{node_ver}}
+
+- name: node android-configure
+  shell: ./android-configure {{android_ndk_path}} > config.log
+  args:
+    chdir: "{{node_dir}}"
+
+- name: make node for android
+  shell: make -j 4 > build.log
+  args:
+    chdir: "{{node_dir}}"

@@ -1,0 +1,5 @@
+---
+  android_ndk_path: /vagrant/android-ndk-r11c
+  node_dir: /vagrant/node
+  node_repo: https://github.com/nodejs/node.git
+  node_ver: 271201fea935cdf85336736e87c06104ce185f61
