@@ -51,6 +51,12 @@ This is where you w
     	--without-perfctr \
     	--openssl-no-asm
 
+You can find more options in the official node configure script:
+https://github.com/nodejs/node/blob/master/configure
+
+To compile node as a shared library you need to add `--shared` to the above
+configure script.
+
 Then you can make the files with:
 
     make -j4
