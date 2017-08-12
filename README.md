@@ -49,7 +49,8 @@ This is where you w
     	--without-dtrace \
     	--without-etw \
     	--without-perfctr \
-    	--openssl-no-asm
+    	--openssl-no-asm \
+      --shared # Leave this option off for an executable binary instead of .so
 
 You can find more options in the official node configure script:
 https://github.com/nodejs/node/blob/master/configure

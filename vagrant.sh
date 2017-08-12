@@ -11,10 +11,12 @@ apt-get install screen vim htop git gnupg zip curl \
 				lib32ncurses5-dev xsltproc -y
 
 cat << EOF >> /home/vagrant/.bashrc
-To build node for Android please run the following scripts in order:
-./01_download_android_ndk.sh
-./02_clone_node_repo.sh
-./03_build_node_for_android.sh
+echo "\n\n"
+echo To build node for Android please run the following scripts in order:
+echo /vagrant/01_download_android_ndk.sh
+echo /vagrant/02_clone_node_repo.sh
+echo /vagrant/03_build_node_for_android.sh
+echo "\nPlease inspect 03_build_node_for_android.sh for more options."
+echo "\n\n"
 
-Please inspect 03_build_node_for_android.sh for more options.
 EOF

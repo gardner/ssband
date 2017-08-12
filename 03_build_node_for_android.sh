@@ -23,6 +23,7 @@ source android-configure $ANDROID_NDK_HOME
 	--without-dtrace \
 	--without-etw \
 	--without-perfctr \
-	--openssl-no-asm
+	--openssl-no-asm \
+  --shared
 
 make -j4
